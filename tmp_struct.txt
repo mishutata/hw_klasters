@@ -1,0 +1,7 @@
+1:# -*- coding: utf-8 -*-
+20:# ---------- 1. patch solution.py: safe HDBSCAN import ----------
+33:# ---------- 2. run final pipeline on public train ----------
+52:# ---------- 3. build notebook ----------
+100:def clean(X):
+230:# ---------- 4. execute in a clean checker-like dir ----------
+247:# ---------- 5. zip exactly two files at root ----------

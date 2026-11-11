@@ -2,121 +2,232 @@
  "ds00": {
   "k": 2,
   "winner": "SpectralClustering",
-  "rt": 0.41
+  "rt": 0.42,
+  "sizes": [
+   335,
+   625
+  ]
  },
  "ds01": {
   "k": 3,
   "winner": "KMeans",
-  "rt": 0.38
+  "rt": 0.39,
+  "sizes": [
+   312,
+   311,
+   313
+  ]
  },
  "ds02": {
   "k": 2,
   "winner": "SpectralClustering",
-  "rt": 0.41
+  "rt": 0.42,
+  "sizes": [
+   816,
+   194
+  ]
  },
  "ds03": {
   "k": 2,
   "winner": "KMeans",
-  "rt": 0.37
+  "rt": 0.36,
+  "sizes": [
+   641,
+   319
+  ]
  },
  "ds04": {
   "k": 3,
-  "winner": "DBSCAN",
-  "rt": 0.43
+  "winner": "SpectralClustering",
+  "rt": 0.36,
+  "sizes": [
+   234,
+   468,
+   234
+  ]
  },
  "ds05": {
   "k": 3,
   "winner": "SpectralClustering",
-  "rt": 0.43
+  "rt": 0.45,
+  "sizes": [
+   345,
+   291,
+   372
+  ]
  },
  "ds06": {
   "k": 3,
   "winner": "SpectralClustering",
-  "rt": 0.45
+  "rt": 0.47,
+  "sizes": [
+   406,
+   300,
+   266
+  ]
  },
  "ds07": {
   "k": 3,
   "winner": "SpectralClustering",
-  "rt": 0.4
+  "rt": 0.39,
+  "sizes": [
+   224,
+   388,
+   348
+  ]
  },
  "ds08": {
   "k": 2,
   "winner": "KMeans",
-  "rt": 0.54
+  "rt": 0.52,
+  "sizes": [
+   516,
+   516
+  ]
  },
  "ds09": {
   "k": 3,
-  "winner": "DBSCAN",
-  "rt": 0.59
+  "winner": "SpectralClustering",
+  "rt": 0.51,
+  "sizes": [
+   527,
+   264,
+   265
+  ]
  },
  "ds10": {
   "k": 3,
   "winner": "DBSCAN",
-  "rt": 0.4
+  "rt": 0.39,
+  "sizes": [
+   715,
+   245
+  ]
  },
  "ds11": {
   "k": 4,
   "winner": "SpectralClustering",
-  "rt": 0.47
+  "rt": 0.47,
+  "sizes": [
+   209,
+   402,
+   301,
+   144
+  ]
  },
  "ds12": {
   "k": 2,
   "winner": "SpectralClustering",
-  "rt": 0.3
+  "rt": 0.31,
+  "sizes": [
+   303,
+   608
+  ]
  },
  "ds13": {
   "k": 2,
   "winner": "SpectralClustering",
-  "rt": 0.48
+  "rt": 0.47,
+  "sizes": [
+   737,
+   247
+  ]
  },
  "ds14": {
   "k": 2,
   "winner": "KMeans",
-  "rt": 0.55
+  "rt": 0.55,
+  "sizes": [
+   471,
+   609
+  ]
  },
  "ds15": {
   "k": 4,
   "winner": "KMeans",
-  "rt": 0.47
+  "rt": 0.48,
+  "sizes": [
+   186,
+   301,
+   246,
+   251
+  ]
  },
  "ds16": {
   "k": 2,
   "winner": "ring/blob",
-  "rt": 0.42
+  "rt": 0.43,
+  "sizes": [
+   511,
+   545
+  ]
  },
  "ds17": {
   "k": 2,
   "winner": "KMeans",
-  "rt": 0.34
+  "rt": 0.35,
+  "sizes": [
+   592,
+   296
+  ]
  },
  "ds18": {
   "k": 2,
   "winner": "KMeans",
-  "rt": 0.34
+  "rt": 0.34,
+  "sizes": [
+   464,
+   472
+  ]
  },
  "ds19": {
   "k": 4,
   "winner": "SpectralClustering",
-  "rt": 0.4
+  "rt": 0.33,
+  "sizes": [
+   275,
+   153,
+   337,
+   147
+  ]
  },
  "ds20": {
   "k": 4,
-  "winner": "DBSCAN",
-  "rt": 0.45
+  "winner": "SpectralClustering",
+  "rt": 0.38,
+  "sizes": [
+   191,
+   379,
+   196,
+   194
+  ]
  },
  "ds21": {
   "k": 3,
   "winner": "SpectralClustering",
-  "rt": 0.4
+  "rt": 0.39,
+  "sizes": [
+   318,
+   213,
+   405
+  ]
  },
  "ds22": {
   "k": 2,
   "winner": "SpectralClustering",
-  "rt": 0.34
+  "rt": 0.34,
+  "sizes": [
+   240,
+   720
+  ]
  },
  "ds23": {
   "k": 2,
   "winner": "ring/blob",
-  "rt": 0.4
+  "rt": 0.41,
+  "sizes": [
+   429,
+   579
+  ]
  }
 }
