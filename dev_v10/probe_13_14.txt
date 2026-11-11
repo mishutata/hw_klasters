@@ -1,0 +1,14 @@
+
+===== ds13 (PCA dims test=8 full=8) =====
+alg       sil_test vs same-alg full-train  vs v9-full-ref
+KMeans       0.158                  0.535           0.535
+GMM          0.152                  0.477           0.492
+Spectral     0.159                  0.624           0.641
+pairwise ARI (test size): KM-GM 0.862  KM-SP 0.787  GM-SP 0.734
+
+===== ds14 (PCA dims test=8 full=8) =====
+alg       sil_test vs same-alg full-train  vs v9-full-ref
+KMeans       0.134                  0.632           0.632
+GMM          0.130                  0.506           0.574
+Spectral     0.122                  0.740           0.724
+pairwise ARI (test size): KM-GM 0.692  KM-SP 0.574  GM-SP 0.574

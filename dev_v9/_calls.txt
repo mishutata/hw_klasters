@@ -1,0 +1,2 @@
+128:def _reduce(X, norm="minmax"):
+221:    Z = _reduce(Xc, NORM_PRIOR.get(ds, "minmax"))
