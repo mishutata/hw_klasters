@@ -1,0 +1,3 @@
+  -> CHOSEN frac = 0.93  (e_ring=5.1% e_blob=23.2% ambig=9.3% ARI=0.943)
+  -> CHOSEN frac = 0.90  (e_ring=0.0% e_blob=2.0% ambig=7.3% ARI=0.936)
+CHOSEN: {'ds16': 0.93, 'ds23': 0.9}
