@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "C:\AI_master\ML\hw_klasters\analysis\final_compare.py", line 88, in <module>
+    ref = ring_ref(X)
+  File "C:\AI_master\ML\hw_klasters\analysis\final_compare.py", line 65, in ring_ref
+    p2 = PCA(n_components=2, random_state=42).fit_transform(sc)
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\utils\_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\decomposition\_pca.py", line 466, in fit_transform
+    U, S, _, X, x_is_centered, xp = self._fit(X)
+                                    ~~~~~~~~~^^^
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\decomposition\_pca.py", line 503, in _fit
+    X = validate_data(
+        self,
+    ...<5 lines>...
+        copy=False,
+    )
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\utils\validation.py", line 2954, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\utils\validation.py", line 1105, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\utils\validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<4 lines>...
+        input_name=input_name,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\.unsloth\studio\unsloth_studio\Lib\site-packages\sklearn\utils\validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+PCA does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values

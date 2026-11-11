@@ -1,0 +1,17 @@
+# Jupyter / Python caches
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Tool & editor caches (not part of the project)
+.ipython/
+.jupyter/
+.matplotlib/
+appdata/
+npm-cache/
+unsloth-tmp/
+jupyter/
+
+# Misc
+nul

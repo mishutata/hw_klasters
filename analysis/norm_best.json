@@ -1,0 +1,98 @@
+{
+ "ds00": {
+  "method": "log-sym",
+  "score": 0.419
+ },
+ "ds01": {
+  "method": "minmax",
+  "score": 0.608
+ },
+ "ds02": {
+  "method": "robust",
+  "score": 0.544
+ },
+ "ds03": {
+  "method": "minmax",
+  "score": 1.144
+ },
+ "ds04": {
+  "method": "minmax",
+  "score": 0.849
+ },
+ "ds05": {
+  "method": "log-sym",
+  "score": 0.6
+ },
+ "ds06": {
+  "method": "log-sym",
+  "score": 0.481
+ },
+ "ds07": {
+  "method": "log-sym",
+  "score": 0.597
+ },
+ "ds08": {
+  "method": "minmax",
+  "score": 0.341
+ },
+ "ds09": {
+  "method": "minmax",
+  "score": 0.744
+ },
+ "ds10": {
+  "method": "log-sym",
+  "score": 0.572
+ },
+ "ds11": {
+  "method": "minmax",
+  "score": 0.794
+ },
+ "ds12": {
+  "method": "minmax",
+  "score": 0.813
+ },
+ "ds13": {
+  "method": "minmax",
+  "score": 0.436
+ },
+ "ds14": {
+  "method": "minmax",
+  "score": 0.388
+ },
+ "ds15": {
+  "method": "minmax",
+  "score": 0.511
+ },
+ "ds16": {
+  "method": "minmax",
+  "score": 0.449
+ },
+ "ds17": {
+  "method": "minmax",
+  "score": 1.078
+ },
+ "ds18": {
+  "method": "log-sym",
+  "score": 0.911
+ },
+ "ds19": {
+  "method": "minmax",
+  "score": 0.589
+ },
+ "ds20": {
+  "method": "minmax",
+  "score": 0.78
+ },
+ "ds21": {
+  "method": "log-sym",
+  "score": 0.55
+ },
+ "ds22": {
+  "method": "log-sym",
+  "score": 0.645
+ },
+ "ds23": {
+  "method": "minmax",
+  "score": 0.431
+ }
+}
