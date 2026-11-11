@@ -1,0 +1,72 @@
+
+def _pipeline(Z_tr, Z_te, ds):
+    """Full ensemble on the pooled set. Returns (labels_pool, info)."""
+    n_tr = len(Z_tr)
+    Z = np.vstack([Z_tr, Z_te]) if n_tr else Z_te
+    n = len(Z)
+    k0 = K_PRIOR.get(ds, 3)
+    ks = sorted({max(2, k0 - 1), k0, min(k0 + 1, max(2, n // 5))})
+
+    # --- choose k: prior first; override only on a strong silhouette signal ---
+    sils = {}
+    for k in ks:
+        sils[k] = _sil(Z, KMeans(n_clusters=k, n_init=15, random_state=42).fit(Z).labels_)
+    best_k = max(ks, key=lambda k: -sils[k])
+    if best_k != k0 and sils[best_k] - sils[k0] < 0.04:
+        best_k = k0  # e.g. keep ring+center as 2, don't split the ring
+    best_k = min(best_k, max(2, n // 3))
+
+    # --- stability probe + density-based core set (on pooled data) ---
+    fits = [KMeans(n_clusters=best_k, n_init=15, random_state=s).fit(Z)
+            for s in (42, 7, 123)]
+    stab = float(np.mean([adjusted_rand_score(fits[i].labels_, fits[j].labels_)
+
+def cluster(X, dataset_id=None):
+    """Return labels only (grading API). Use explain() for the full report."""
+    lab, _ = _run(X, dataset_id)
+    return lab
+
+
+def explain(X, dataset_id=None):
+    """Same pipeline as cluster(); returns dict with 'labels' and diagnostics."""
+    lab, info = _run(X, dataset_id)
+    out = {'labels': lab}
+    out.update(info)
+    return out
+
+
+def _run(X, dataset_id=None):
+    Xc = _clean(X)
+    n = len(Xc)
+    ds = str(dataset_id or "").lower().strip("'\" ")
+    art = ART.get(ds) if ART is not None else None
+    if art is not None and Xc.shape[1] == art['d_in']:
+        # transform test points into the train's Z-space with saved parameters
+        Z0 = _apply_norm(Xc, art['norm'], art['nprm'])
+        Z0 = np.where(np.isfinite(Z0), Z0, 0.0)
+        Z_te = _pca_transform(Z0, art['d_pca'], np.asarray(art['pmean']), np.asarray(art['pcomp']))
+        Z_tr = _ub64(art['ztr'], (art['n_tr'], art['d_pca']))
+    else:
+        # fallback: unknown dataset -> refit locally, cluster the given points only
+        method = NORM_PRIOR.get(ds, "minmax")
+        Z0 = _apply_norm(Xc, method, _fit_norm_params(Xc, method))
+        Z0 = np.where(np.isfinite(Z0), Z0, 0.0)
+        d_pca, pmean, pcomp = _fit_pca(Z0)
+        Z_te = _pca_transform(Z0, d_pca, pmean, pcomp)
+        Z_tr = np.zeros((0, d_pca))
+    if n < 4 and len(Z_tr) < 4:
+        lab = np.zeros(n, dtype=int)
+        info = {'k_prior': None, 'k_used': 1, 'sil_by_k': {},
+                'km_stability': 1.0, 'core_frac_removed': 0.0, 'fit_set': 'all',
+                'pooled': int(len(Z_tr)), 'methods': {'constant': 0.0}, 'winner': 'constant'}
+        return lab, info
+    labels_pool, info = _pipeline(Z_tr, Z_te, ds)
+    return np.asarray(labels_pool[len(Z_tr):], dtype=int), info
+
+
+# --- ds16/ds23: ellipse ring + central blob fix (validated in sol_16_23/) ---
+# Standard k=2 clusterers split these datasets into arcs; here we fit an
+# ellipse-aware radial boundary in the top-2 Z dimensions and label
+# inside/outside instead. Fitted on pooled data at call time, so it is more
+# stable than fitting on ~250 test points alone.
+

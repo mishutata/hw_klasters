@@ -1,0 +1,26 @@
+      k3    ks4                                                     w4   ag34   rt3  rt4max
+ds                                                                                         
+ds00   2  2/2/2                                     SpectralClustering  0.609  0.19    0.42
+ds01   3  3/3/3                                                 KMeans  0.833  0.19    0.41
+ds02   2  2/2/2                                     SpectralClustering  0.920  0.18    0.44
+ds03   2  2/2/2                                                 KMeans  1.000  0.18    0.41
+ds04   3  3/3/3                                                HDBSCAN  0.696  0.21    0.48
+ds05   3  3/3/3                                     SpectralClustering  0.947  0.22    0.48
+ds06   3  3/3/3                                     SpectralClustering  0.823  0.20    0.48
+ds07   3  3/3/3                                     SpectralClustering  0.941  0.19    0.41
+ds08   2  2/2/2                                                 KMeans  0.002  0.19    0.64
+ds09   3  3/3/3                                                 DBSCAN  1.000  0.24    0.73
+ds10   3  3/3/3              UNSTABLE:DBSCAN|DBSCAN|SpectralClustering  0.585  0.19    0.42
+ds11   4  4/4/4                                     SpectralClustering  0.944  0.22    0.52
+ds12   2  2/2/2  UNSTABLE:SpectralClustering|DBSCAN|SpectralClustering  0.970  0.16    0.35
+ds13   2  2/2/2                                     SpectralClustering  0.018  0.16    0.57
+ds14   2  2/2/2                                                 KMeans  0.016  0.18    0.64
+ds15   4  4/4/4                                                 KMeans  0.336  0.23    0.46
+ds16   2  2/2/2                                              ring/blob  0.513  0.17    0.42
+ds17   2  2/2/2                                                 KMeans  1.000  0.17    0.37
+ds18   2  2/2/2                                                 KMeans  1.000  0.18    0.36
+ds19   4  4/4/4                                                 KMeans  0.897  0.21    0.43
+ds20   4  4/4/4                                                 DBSCAN  0.843  0.23    0.48
+ds21   3  3/3/3                                     SpectralClustering  0.866  0.19    0.41
+ds22   2  2/2/2                                     SpectralClustering  0.921  0.16    0.35
+ds23   2  2/2/2                                              ring/blob  0.577  0.16    0.37

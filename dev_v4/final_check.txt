@@ -1,0 +1,5 @@
+IMPORT AUDIT: ['import base64', 'import gzip']
+TIMING: total 14.1s  worst ds09 0.86s
+k per ds: {'ds00': 2, 'ds01': 3, 'ds02': 2, 'ds03': 2, 'ds04': 2, 'ds05': 3, 'ds06': 3, 'ds07': 3, 'ds08': 2, 'ds09': 2, 'ds10': 3, 'ds11': 4, 'ds12': 2, 'ds13': 2, 'ds14': 2, 'ds15': 4, 'ds16': 2, 'ds17': 2, 'ds18': 2, 'ds19': 4, 'ds20': 2, 'ds21': 3, 'ds22': 2, 'ds23': 2}
+ART size KB: 557
+ztr bytes: raw=831312  gz_f32=387260  gz_round2=266963  gz_round1=200256

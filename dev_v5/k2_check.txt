@@ -1,0 +1,6 @@
+ds19 k=2/KMeans sil_full=0.4529
+ds19 k=3/KMeans sil_full=0.3618
+ds04 k=2/KMeans sil_full=0.6221
+ds04 k=3/KMeans sil_full=0.5732
+ds19 k=2/KMeans stab_small=0.9053
+ds04 k=2/KMeans stab_small=1.0000
