@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\AI_master\ML\hw_klasters\dev_v11\k_evidence.py", line 46, in <module>
+    a.append(adjusted_rand_score([li[t] for t in inter], [lj[t] for t in inter]))
+                                  ~~^^^
+KeyError: np.int32(2)

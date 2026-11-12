@@ -19,3 +19,5 @@ nul
 # Browser profile caches
 Google/
 Microsoft/
+tmp_*
+Python/
