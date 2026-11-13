@@ -1,13 +1,4 @@
-"""Clustering solution FINAL — v6. Identical to v5 except:
-  - ds18: k PINNED to 4 and winner PINNED to SpectralClustering (user-verified on
-    public train pictures, dev_v6/ds18_k4_spectral.png).
-  - ds16/ds23: k PINNED to 4 and winner PINNED to SpectralClustering. These are an
-    ellipse ring + dense central blob; the old ring/blob fix kept them at k=2, but
-    the ring itself has 3 arcs (dev_v5/deep_ds16_18_23.png), so the true split is
-    4: three ring arcs + center. Spectral at k=4 recovers it cleanly; with k pinned
-    to 4 the ring/blob override below no longer triggers.
-  - v5 pins kept: ds04/ds09 (k=3) and ds19/ds20 (k=4), winner SpectralClustering.
-v5 was identical to v3 (0.45 submission) except:
+"""Clustering solution FINAL — v5. Identical to v3 (0.45 submission) except:
   - k is PINNED for ds04/ds09/ds19/ds20 (no +/-1 silhouette window): true cluster
     count visually verified on public train (dev_v5/k3_ds04.png / k3_ds09.png,
     dev_v5/k4_ds19.png / k4_ds20.png).
@@ -67,16 +58,13 @@ K_PRIOR = {
 # k pinned (no +/-1 silhouette window) where the true cluster count was visually
 # verified on public train (dev_v5/k3_ds04.png / k3_ds09.png / k4_ds19.png / k4_ds20.png):
 # ds04 = 3 elongated blobs; ds09 = 3 clouds; ds19 = 4 clusters; ds20 = 4 clusters.
-K_PIN = {"ds04": 3, "ds09": 3, "ds16": 4, "ds18": 4,
-         "ds19": 4, "ds20": 4, "ds23": 4}
+K_PIN = {"ds04": 3, "ds09": 3, "ds19": 4, "ds20": 4}
 
 # winner pinned where the true partition was visually verified on public train:
-# at the pinned k SpectralClustering recovers the real blobs of ds04/ds09/ds16/
-# ds18/ds19/ds20/ds23, KMeans/GMM smear them.
+# at the pinned k SpectralClustering recovers the real blobs of ds04/ds09/ds19/ds20,
+# KMeans/GMM smear them.
 WINNER_PIN = {"ds04": "SpectralClustering", "ds09": "SpectralClustering",
-              "ds16": "SpectralClustering", "ds18": "SpectralClustering",
-              "ds19": "SpectralClustering", "ds20": "SpectralClustering",
-              "ds23": "SpectralClustering"}
+              "ds19": "SpectralClustering", "ds20": "SpectralClustering"}
 
 # Best input normalization per dataset on public train (analysis/norm_research):
 # minmax wins 15/24, log-sym 8/24, robust 1/24; 'standard' never wins.
