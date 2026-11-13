@@ -1,0 +1,9 @@
+ds,A_mean,A_min,A_winners,B_spec,B_mean,B_min,B_winners
+ds01,0.851,0.598,DBSCAN/KMeans,,,,
+ds05,0.912,0.749,GaussianMixture/KMeans/SpectralClustering,"{'pin_k': 3, 'pin_w': 'KMeans', 'norm': 'log-sym'}",0.96,0.868,KMeans
+ds06,0.84,0.732,KMeans/SpectralClustering,"{'pin_k': 3, 'pin_w': 'KMeans', 'norm': 'log-sym'}",0.923,0.841,KMeans
+ds07,0.938,0.868,KMeans/SpectralClustering,"{'pin_k': 3, 'pin_w': 'KMeans', 'norm': 'log-sym'}",0.982,0.947,KMeans
+ds14,0.806,0.674,GaussianMixture/KMeans/SpectralClustering,"{'pin_k': 2, 'pin_w': 'SpectralClustering', 'norm': 'log-sym'}",0.788,0.662,SpectralClustering
+ds15,0.806,0.728,KMeans/SpectralClustering,"{'pin_k': 2, 'pin_w': 'KMeans', 'norm': 'robust'}",0.904,0.722,KMeans
+ds21,0.837,0.69,KMeans/SpectralClustering,"{'pin_k': 3, 'pin_w': 'KMeans', 'norm': 'log-sym'}",0.914,0.85,KMeans
+ds22,0.934,0.802,DBSCAN/SpectralClustering,,,,

@@ -1,0 +1,25 @@
+ds,v5,v5score,best,bestsc,gap,n_beat,verdict
+ds00,SpectralClustering k=2 log-sym,,KMeans k=3 log-sym d=10,0.871979075555427,,-1,SWAP?
+ds01,KMeans k=3 minmax,0.9997680351404769,GaussianMixture k=3 minmax d=auto,1.0,0.00023196485952314827,6,KEEP
+ds02,SpectralClustering k=2 robust,,KMeans k=4 minmax d=auto,0.8547975452181668,,-1,SWAP?
+ds03,KMeans k=2 minmax,1.0,KMeans k=2 minmax d=auto,1.0,0.0,0,KEEP
+ds04,SpectralClustering k=3 minmax,,KMeans k=2 minmax d=auto,1.0,,-1,SWAP?
+ds05,SpectralClustering k=3 log-sym,,KMeans k=3 log-sym d=10,0.9395638282976712,,-1,SWAP?
+ds06,SpectralClustering k=3 log-sym,,KMeans k=3 log-sym d=auto,0.8908712069508874,,-1,SWAP?
+ds07,SpectralClustering k=3 log-sym,,Spectral k=2 minmax d=10,0.9869505581885444,,-1,SWAP?
+ds08,KMeans k=2 minmax,0.781893786935159,Spectral k=2 minmax d=6,0.7923052702220198,0.010411483286860812,3,KEEP
+ds09,SpectralClustering k=3 minmax,,KMeans k=2 minmax d=auto,1.0,,-1,SWAP?
+ds10,DBSCAN k=3 log-sym,,KMeans k=3 log-sym d=10,0.9488419891615238,,-1,SWAP?
+ds11,SpectralClustering k=4 minmax,,Spectral k=2 minmax d=6,1.0,,-1,SWAP?
+ds12,SpectralClustering k=2 minmax,,KMeans k=2 minmax d=auto,0.9943066262868816,,-1,SWAP?
+ds13,SpectralClustering k=2 minmax,,Spectral k=2 minmax d=6,0.9276763308839306,,-1,SWAP?
+ds14,KMeans k=2 minmax,0.7920675548966513,Spectral k=2 log-sym d=6,0.8526112757336022,0.06054372083695092,7,CHECK
+ds15,KMeans k=4 minmax,0.8142997882911333,KMeans k=2 robust d=10,0.9712642306490264,0.1569644423578932,31,SWAP?
+ds16,ring/blob k=2 minmax,,KMeans k=2 minmax d=10,0.9321360473994064,,-1,SWAP?
+ds17,KMeans k=2 minmax,1.0,KMeans k=2 minmax d=auto,1.0,0.0,0,KEEP
+ds18,KMeans k=2 log-sym,0.9854013894460988,GaussianMixture k=2 robust d=10,0.9914091677177522,0.006007778271653441,2,KEEP
+ds19,SpectralClustering k=4 minmax,,GaussianMixture k=2 log-sym d=6,0.9359064611047796,,-1,SWAP?
+ds20,SpectralClustering k=4 minmax,,Spectral k=2 log-sym d=auto,1.0,,-1,SWAP?
+ds21,SpectralClustering k=3 log-sym,,KMeans k=3 log-sym d=10,0.8558192435551725,,-1,SWAP?
+ds22,SpectralClustering k=2 log-sym,,Spectral k=2 minmax d=10,0.9844016020483471,,-1,SWAP?
+ds23,ring/blob k=2 minmax,,KMeans k=2 robust d=auto,0.9251442016607944,,-1,SWAP?

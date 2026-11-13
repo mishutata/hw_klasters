@@ -1,0 +1,14 @@
+ds,k,winner_now,norm,pipe_stab,cur_grid_score,FLAG
+ds01,3,KMeans,minmax,0.851,1.0,True
+ds02,2,SpectralClustering,robust,0.965,,False
+ds03,2,KMeans,minmax,1.0,1.0,False
+ds05,3,SpectralClustering,log-sym,0.912,0.904,True
+ds06,3,SpectralClustering,log-sym,0.84,0.802,True
+ds07,3,SpectralClustering,log-sym,0.938,0.938,True
+ds11,4,SpectralClustering,minmax,0.961,0.982,False
+ds12,2,SpectralClustering,minmax,0.971,0.982,False
+ds14,2,KMeans,minmax,0.806,0.792,True
+ds15,4,KMeans,minmax,0.806,0.814,True
+ds17,2,KMeans,minmax,1.0,1.0,False
+ds21,3,SpectralClustering,log-sym,0.837,0.819,True
+ds22,2,SpectralClustering,log-sym,0.934,0.973,True
