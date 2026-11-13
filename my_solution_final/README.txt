@@ -1,48 +1,36 @@
-my_solution_final — combined best-of-everything version
-=======================================================
+my_solution_final — v6, the best submitted solution (Mean ARI 0.4846)
+=====================================================================
 
-solution.py here = my_solution3/solution.py (v3) + the ring/blob fix for
-ds16/ds23. Nothing else changed: same pipeline, same priors, same seeds.
+solution.py here = my_solution6/solution.py, byte-identical. notebook.ipynb and
+submission.zip are built from it (build_final.py). Do NOT submit anything else:
+the late PCA experiments below all scored worse.
 
-Provenance of each piece
-------------------------
-1. Base ensemble (KMeans + GMM + Spectral)   <- my_solver (v1)
-   the original pipeline.
-2. DBSCAN/HDBSCAN as confirming candidates   <- my_solution2 (v2, DBSCAN research)
-   auto-tuned density clustering only joins the vote when it agrees with the
-   best parametric candidate; its reliable contribution is core-point /
-   outlier detection (steps 3-4), which stabilises KMeans (ds01 cross-seed
-   ARI 0.41 -> 0.86).
-3. Per-dataset input normalization           <- analysis/norm_research -> v3
-   minmax wins 15/24, log-sym 8/24, robust 1/24; 'standard' never wins.
-4. Ring/blob split for ds16/ds23            <- sol_16_23/eval_ring_blob.py
-   these are an ellipse ring + dense central blob; plain k=2 clusterers split
-   them into arcs (ARI ~0 vs the true split). The fitted boundary is stable:
-   bootstrap ARI 0.93 / 0.94 over 50x 70% resamples.
+Score history (public submissions)
+----------------------------------
+  v3 0.45xxx   v7 ~0.46   v8 ~0.47   v10 ~0.45-0.48   (see git log / RESULT_RECORDs)
+  v6 0.4846    <- BEST, this package
+  v12 0.4655   median-reconstruction PCA rule, GLOBAL (no cap), tau=0.2
+  v13 0.4662   same rule but ONLY for the 4 cap-bound datasets ds08/ds09/ds13/ds14
+               (other 20 datasets bit-identical to v6 by construction)
 
-How it works (see solution.py docstring for details)
-----------------------------------------------------
-1. NaN-safe clean -> per-dataset norm -> PCA (95% variance, <=8 dims)
-2. k = prior (validated on public train), refined on a +/-1 silhouette window
-3. Density probe: core set from d5 (distance to 5th NN)
-4. Stability probe: KMeans at best_k with 3 seeds; if unstable, fit on the
-   core set and extend labels to tail points by nearest centroid in Z-space
-5. Candidates: KMeans + GMM + Spectral (+ DBSCAN/HDBSCAN as confirming only)
-6. Winner: silhouette + 0.3 * mean consensus NMI (deterministic)
-7. NEW for ds16/ds23: labels are replaced by the ellipse-aware ring/blob
-   boundary fitted in PCA-2 space; winner is reported as 'ring/blob'
+Why we stopped at v6
+--------------------
+The only open hypothesis was that v6's hard PCA cap of 8 dims hurt the four
+datasets with d95 > 8 (ds08/09/13/14 kept only 75-91% variance at cap 8).
+v13 isolates exactly that change: since its other 20 datasets are bit-identical
+to v6, its -0.018 loss vs v6 comes entirely from those four -> extra (noisy)
+PCA dimensions make clustering WORSE there, not better. v12's near-identical
+loss (-0.019) confirms the same conclusion and shows the ~7 other datasets that
+drifted under v12 were net-neutral. The PCA-dimension angle is thus closed;
+v6's 95%-variance/cap-8 rule stays as-is.
 
-Usage
------
-labels = cluster(X, dataset_id)     # grading API, deterministic (random_state=42)
-info   = explain(X, dataset_id)     # full report: winner, k_used, per-method scores, stability
+Pipeline (per dataset, see solution.py docstring)
+-------------------------------------------------
+1. NaN-safe clean -> per-dataset norm (minmax/log-sym/robust, chosen on public train)
+2. PCA: 95% variance, cap 8 dims
+3. k = prior (+/-1 silhouette window; pinned for ds04/ds09/ds16/ds18/ds19/ds20/ds23)
+4. Density probe (d5 core set) + KMeans seed-stability probe (fit on core if unstable)
+5. Ensemble KMeans/GMM/Spectral (+DBSCAN/HDBSCAN confirming only),
+   winner = silhouette + 0.3*consensus NMI
 
-Verification (analysis/final_verify.py, public train, all 24 datasets)
-----------------------------------------------------------------------
-- ds00-ds15, ds17-ds22 (22 sets): labels identical to v3 (ARI = 1.0), same winner and k
-- ds16: winner 'ring/blob', ARI vs sol_16_23 reference split = 1.000
-- ds23: winner 'ring/blob', ARI vs sol_16_23 reference split = 1.000
-- mean runtime over the 24 datasets: ~0.5 s
-
-Cross-version comparison of v1/v2/v3 on all 24 sets:
-analysis/final_compare.csv (produced by analysis/final_compare.py)
+Deterministic: random_state=42 everywhere.
