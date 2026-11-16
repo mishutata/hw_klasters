@@ -21,3 +21,6 @@ Google/
 Microsoft/
 tmp_*
 Python/
+
+# Unsloth Studio attachment cache (not part of the project)
+.unsloth_attachments/

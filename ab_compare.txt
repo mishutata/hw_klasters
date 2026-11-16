@@ -1,0 +1,25 @@
+slice ARI v16 vs friend (8 slices x 244 rows)
+ds05  mean=0.459  min=0.324
+ds19  mean=0.485  min=0.430
+ds02  mean=0.513  min=0.420
+ds13  mean=0.533  min=0.481
+ds15  mean=0.571  min=0.452
+ds01  mean=0.574  min=0.543
+ds08  mean=0.605  min=0.375
+ds06  mean=0.693  min=0.540
+ds10  mean=0.717  min=0.592
+ds00  mean=0.722  min=0.638
+ds14  mean=0.743  min=0.518
+ds21  mean=0.764  min=0.384
+ds23  mean=0.842  min=0.670
+ds04  mean=0.870  min=0.472
+ds16  mean=0.905  min=0.726
+ds22  mean=0.915  min=0.863
+ds09  mean=0.935  min=0.490
+ds07  mean=0.953  min=0.916
+ds11  mean=0.954  min=0.939
+ds12  mean=0.963  min=0.918
+ds20  mean=0.982  min=0.963
+ds18  mean=0.990  min=0.967
+ds03  mean=1.000  min=1.000
+ds17  mean=1.000  min=1.000
