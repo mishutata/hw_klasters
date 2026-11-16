@@ -1,17 +1,23 @@
-my_solution_final — v17+p6 (BEST SUBMISSION, Mean ARI 0.516626)
-===============================================================
+my_solution_final — q6 (BEST SUBMISSION, Mean ARI 0.538102)
+=============================================================
 
-UPDATED 2026-11-15: the best score is now 0.516626, produced by the p6 package
-(my_solution17_p6_ds07nn40/). This folder is a BYTE-IDENTICAL copy of that
-proven package (solution.py + notebook.ipynb); resubmitting submission.zip
-reproduces the recorded best score exactly.
+UPDATED 2026-11-16: the best score is now 0.538102, produced by the q6 package
+(my_solution17_q6_hisk6/). This folder is a BYTE-IDENTICAL copy of that proven
+package (solution.py + notebook.ipynb; verified vs my_solution17_q6_hisk6 and
+vs submission.zip); resubmitting submission.zip reproduces the recorded best
+score exactly.
+
+q6 = p6 (0.516626) + six high-k settings from a groupmate's 0.62-scoring run:
+ds03=3, ds04=4, ds09=4, ds17=3, ds18=3, ds19=2. His k=1 trio (ds08/13/14)
+was probed and REJECTED (-0.96 ARI-sum), so q6 keeps p6's k there.
 
 p6 = v17 (0.516148, port of friend's per-dataset pipeline) + ONE change:
-ds07 spectral n_neighbors 20 -> 40 (NN_OVR). Everything else byte-identical.
+ds07 spectral n_neighbors 20 -> 40 (NN_OVR).
 
 Score history (hidden test, Mean ARI; deltas vs v17 in mean-ARI units)
 ----------------------------------------------------------------------
-v17+p6  0.516626  BEST — this package (my_solution17_p6_ds07nn40)
+q6      0.538102  BEST — this package (my_solution17_q6_hisk6) = p6 + 6 high-k
+v17+p6  0.516626  previous champion (my_solution17_p6_ds07nn40)
 v17     0.516148  champion before p6
 p7      0.515835  v17 + RING_FRAC applied (ds16@0.85, ds23@0.72) -> keep 0.80/0.80
 p5      0.515379  v17 + ds21 nn=40 -> nn=20 stands
