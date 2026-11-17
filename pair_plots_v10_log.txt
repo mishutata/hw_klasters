@@ -1,0 +1,50 @@
+saved pair_plots_v10\ds00.png
+saved pair_plots_v10\ds01.png
+saved pair_plots_v10\ds02.png
+saved pair_plots_v10\ds03.png
+saved pair_plots_v10\ds04.png
+saved pair_plots_v10\ds05.png
+saved pair_plots_v10\ds06.png
+saved pair_plots_v10\ds07.png
+saved pair_plots_v10\ds08.png
+saved pair_plots_v10\ds09.png
+saved pair_plots_v10\ds10.png
+saved pair_plots_v10\ds11.png
+saved pair_plots_v10\ds12.png
+saved pair_plots_v10\ds13.png
+saved pair_plots_v10\ds14.png
+saved pair_plots_v10\ds15.png
+saved pair_plots_v10\ds16.png
+saved pair_plots_v10\ds17.png
+saved pair_plots_v10\ds18.png
+saved pair_plots_v10\ds19.png
+saved pair_plots_v10\ds20.png
+saved pair_plots_v10\ds21.png
+saved pair_plots_v10\ds22.png
+saved pair_plots_v10\ds23.png
+
+ds   p   k  npairs
+ds00   9  3  36
+ds01   6  3  15
+ds02  10  3  45
+ds03   9  3  36
+ds04   9  4  36
+ds05  11  3  55
+ds06  10  3  45
+ds07  10  3  45
+ds08  13  2  78
+ds09  12  4  66
+ds10   8  3  28
+ds11   9  4  36
+ds12   8  2  28
+ds13  12  3  66
+ds14  14  2  91
+ds15   9  4  36
+ds16  11  2  55
+ds17   7  3  21
+ds18   8  3  28
+ds19   8  2  28
+ds20   9  4  36
+ds21   9  3  36
+ds22   9  2  36
+ds23  10  2  45

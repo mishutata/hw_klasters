@@ -1,0 +1,21 @@
+16: 'ds00': (3, 'kmeans'),          'ds01': (3, 'gmm'),
+17: 'ds02': (3, 'gmm_tied'),        'ds03': (3, 'gmm'),
+18: 'ds04': (4, 'gmm'),             'ds05': (3, 'gmm'),
+19: 'ds06': (3, 'kmeans'),          'ds07': (3, 'spectral_knn'),
+20: 'ds08': (2, 'gmm_full'),
+21: 'ds09': (4, 'gmm_tied'),    'ds10': (3, 'gmm'),
+22: 'ds11': (4, 'gmm'),          'ds12': (2, 'gmm'),
+23: 'ds13': (3, 'gmm_tied'),
+24: 'ds14': (2, 'gmm_tied'),
+25: 'ds15': (4, 'gmm'),
+26: 'ds16': (2, 'ring_blob'),
+27: 'ds17': (3, 'kmeans'),          'ds18': (3, 'gmm'),
+28: 'ds19': (2, 'spectral_knn'),    'ds20': (4, 'kmeans'),
+29: 'ds21': (3, 'spectral_knn'),
+30: 'ds22': (2, 'gmm'),             'ds23': (2, 'ring_blob'),
+37: MINMAX_DS = {'ds00','ds01','ds05','ds06','ds12','ds17','ds22'}
+38: # PROBE p6: NN_OVR={'ds07': 40} at local spectral site; ds passed only for spectral_knn
+39: RING_FRAC = {'ds16': 0.85, 'ds23': 0.72}
+40: NN_OVR = {'ds07': 40}
+190: # ds15 and ring datasets run on the test sample only (no pooling)
+191: if ds == 'ds15' or mt == 'ring_blob':

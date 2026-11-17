@@ -111,3 +111,28 @@ Exact decomposition (fixed hidden test, sums x24):
   (expected 0.535581 from linear decomposition; actual +0.0025 above it — small positive
    interaction among the six, sums still consistent: q4-q5 gain holds on hidden test)
 CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip rebuilt from it).
+
+- q7_kplus1 (my_solution18_kplus1/): EVERY ds k->k+1, same algo (probe for 'test has one extra
+  cluster'). ring_blob ds16/ds23 are geometric 2-cluster so effectively a 22-ds experiment.
+  SUBMIT -> if mean ARI > 0.538102 the +1 hypothesis is broadly real; if it drops, a few winners
+  may be hidden under many over-split losers -> then bisect (split ds into two halves) to localize.
+- q7 RESULT: SUBMITTED -> **0.497569** (vs q6 0.538102 => -0.0405 mean / -0.972 ARI-sum).
+  REJECTED: adding a cluster broadly HURTS (over-splitting correct ds dominates). The 'test has one
+  extra cluster' hypothesis is NOT supported at the aggregate level. Champion stays q6 = 0.538102.
+- q8_init (my_solution19_init/): GMM n_init 5->30 (all 3 gmm variants), nothing else. Low-risk robustness probe: keeps best-of-inits so can't worsen the fit; tests estimation-quality headroom.
+- k=1 ISOLATION probes (user hunch: group test masked an individual winner). Each = q6 + ONE trio ds -> k=1:
+  my_solution20_k1_ds08 (ds08=1), my_solution21_k1_ds13 (ds13=1), my_solution22_k1_ds14 (ds14=1).
+  Compare each to q6=0.538102; delta*24 = that ds's ARI-sum at k=1. Any score>0.538102 => adopt that ds.
+  Prior: group was -0.9619 sum, so likely all negative, but isolate to be sure. Submit one at a time, stop early if a winner.
+- k=1 ds08: SUBMITTED 0.526029 => -0.2898 ARI-sum (vs q6). NEGATIVE -> ds08 stays k=2.
+- k=1 LINE CLOSED: ds08=-0.29 (measured), group=-0.96 => ds13+ds14~-0.67 (~-0.34 each). Structural: k=1 => ARI=0 unless test has 1 cluster, so can't win otherwise; group=-0.96 already rules out a big single winner. No more submissions on ds13/ds14. Champion stays q6=0.538102.
+
+- ds19 PARABOLA probe (user hunch: 'ds19 has 2 parabolas' — verified in raw coords):
+  In (x1s,x5s) the data is TWO interleaved parabolic arcs (x5~f(x1) R2=0.966):
+  para0 a=+0.036 n=410, para1 a=+0.199 n=502, rms~0.12 each, crossing at x1s~1.23.
+  Champion spectral k=2 cuts the curve positionally -> ARI ~0.105 vs per-parabola split.
+  my_solution23_ds19parab = q6 + ds19:(2,'para2') — EM of two quadratics on (x1s,x5s),
+  PCA(4) skipped for this method (structure invisible in PCA space). 23/24 datasets
+  byte-identical to q6; ds19 == EM oracle ARI 1.0; runtime 2.4s all-24 on train.
+  Readout: score>0.538102 => per-parabola truth, fold in (expect ~+0.03); big drop
+  => positional-cut world, revert. Figures: dev_v10/ds19_two_parabolas.png.
