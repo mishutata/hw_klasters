@@ -136,3 +136,16 @@ CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip reb
   byte-identical to q6; ds19 == EM oracle ARI 1.0; runtime 2.4s all-24 on train.
   Readout: score>0.538102 => per-parabola truth, fold in (expect ~+0.03); big drop
   => positional-cut world, revert. Figures: dev/v10/ds19_two_parabolas.png.
+- ds19 PARABOLA probe RESULT (submitted 2026-11-17): **0.529434** = q6 - 0.00867
+  -> ds19 alone ~-0.21 ARI => POSITIONAL-CUT WORLD CONFIRMED, para2 REJECTED.
+  Champion stays q6 (my_solution_final already holds q6; para2 only ever lived in
+  the probe). Root cause (dev/v10/ds19_one_curve.png): ds19 is ONE smooth 1-D
+  curve (x1,x5 decrease smoothly along rank(x6); x7 U-shaped; x2/x3/x4 noise);
+  truth = two positional segments of it. The 'two parabolas' in (x1,x5) were a fit
+  artifact: EM of two near-identical quadratics split ONE noisy curve by vertical
+  proximity -> membership driven by wiggles/noise (430 flips along the curve,
+  ARI ~0.1 vs spectral). Spectral k=2 nn=20 finds the real segments (boundary at
+  s*~=369/912 ~= 40% along the curve, NOT the median; cut@median(x6) only ARI
+  0.592 vs it) -> no high-confidence better method, so no further ds19 probe.
+  Figures: dev/v10/ds19_parabola_story.png, ds19_one_curve.png,
+  ds19_parab_coord_heatmap.png, ds19_x5x6.png; tools/tools_ds19_viz*.py.
