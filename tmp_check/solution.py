@@ -1,7 +1,7 @@
 """Clustering solution FINAL — v5. Identical to v3 (0.45 submission) except:
   - k is PINNED for ds04/ds09/ds19/ds20 (no +/-1 silhouette window): true cluster
-    count visually verified on public train (dev_v5/k3_ds04.png / k3_ds09.png,
-    dev_v5/k4_ds19.png / k4_ds20.png).
+    count visually verified on public train (dev/v5/k3_ds04.png / k3_ds09.png,
+    dev/v5/k4_ds19.png / k4_ds20.png).
   - winner is PINNED to SpectralClustering for ds04/ds09/ds19/ds20: at the pinned k
     it recovers the real blobs while KMeans/GMM smear them (same figures).
 
@@ -9,7 +9,7 @@ v3 pipeline: per-dataset normalization), + ring/blob fix for ds16/ds23.
 
 Pipeline (per dataset):
  1. NaN-safe clean -> per-dataset norm (minmax / log-sym / robust, chosen on
-    public train: analysis/norm_research) -> PCA (95% variance, <=8 dims).
+    public train: dev/analysis/norm_research) -> PCA (95% variance, <=8 dims).
  2. k = prior (validated on public train), refined on a +/-1 silhouette window.
  3. Density probe: d5 = distance to 5th NN; core set = d5 <= max(p95, 2*median).
  4. Stability probe: KMeans at best_k with 3 seeds. If stable (mean pairwise ARI
@@ -25,7 +25,7 @@ Pipeline (per dataset):
  7. ds16/ds23 only: these are an ellipse ring + dense central blob, and k=2
     clusterers split them into arcs; the labels are replaced by the
     ellipse-aware ring/blob boundary fitted in PCA-2 space (validated in
-    sol_16_23/, bootstrap ARI 0.93/0.94).
+    old_solutions/sol_16_23/, bootstrap ARI 0.93/0.94).
 
 Why DBSCAN only as confirmer: on this data clusters overlap in density, so an
 auto-tuned DBSCAN mis-splits or drowns most datasets; its reliable contribution is
@@ -56,7 +56,7 @@ K_PRIOR = {
 }
 
 # k pinned (no +/-1 silhouette window) where the true cluster count was visually
-# verified on public train (dev_v5/k3_ds04.png / k3_ds09.png / k4_ds19.png / k4_ds20.png):
+# verified on public train (dev/v5/k3_ds04.png / k3_ds09.png / k4_ds19.png / k4_ds20.png):
 # ds04 = 3 elongated blobs; ds09 = 3 clouds; ds19 = 4 clusters; ds20 = 4 clusters.
 K_PIN = {"ds04": 3, "ds09": 3, "ds19": 4, "ds20": 4}
 
@@ -66,7 +66,7 @@ K_PIN = {"ds04": 3, "ds09": 3, "ds19": 4, "ds20": 4}
 WINNER_PIN = {"ds04": "SpectralClustering", "ds09": "SpectralClustering",
               "ds19": "SpectralClustering", "ds20": "SpectralClustering"}
 
-# Best input normalization per dataset on public train (analysis/norm_research):
+# Best input normalization per dataset on public train (dev/analysis/norm_research):
 # minmax wins 15/24, log-sym 8/24, robust 1/24; 'standard' never wins.
 NORM_PRIOR = {
     "ds00": "log-sym", "ds05": "log-sym", "ds06": "log-sym",
@@ -284,7 +284,7 @@ def _run(X, dataset_id=None):
         'methods': {name: round(float(s), 3) for (name, _), s in zip(cands, score)},
         'winner': cands[i][0],
     }
-    # ds16/ds23: ring + central blob geometry beats arc-splitting (sol_16_23/)
+    # ds16/ds23: ring + central blob geometry beats arc-splitting (old_solutions/sol_16_23/)
     if best_k == 2 and ds in RING_DS:
         rb = _ring_blob_labels(Xc)
         if rb is not None:
@@ -295,11 +295,11 @@ def _run(X, dataset_id=None):
     return labels, info
 
 
-# --- ds16/ds23: ellipse ring + central blob fix (validated in sol_16_23/) ---
+# --- ds16/ds23: ellipse ring + central blob fix (validated in old_solutions/sol_16_23/) ---
 # Standard k=2 clusterers (KMeans/Spectral/GMM) split these datasets into arcs:
 # ARI ~ 0 vs the true ring/blob split. Here we fit an ellipse-aware radial
 # boundary in PCA-2 space and label inside/outside instead; bootstrap ARI
-# 0.93/0.94 across 70% resamples (sol_16_23/eval_ring_blob.py).
+# 0.93/0.94 across 70% resamples (old_solutions/sol_16_23/eval_ring_blob.py).
 RING_DS = ("ds16", "ds23")
 
 

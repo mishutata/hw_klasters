@@ -2,8 +2,8 @@ my_solution_final — q6 (BEST SUBMISSION, Mean ARI 0.538102)
 =============================================================
 
 UPDATED 2026-11-16: the best score is now 0.538102, produced by the q6 package
-(my_solution17_q6_hisk6/). This folder is a BYTE-IDENTICAL copy of that proven
-package (solution.py + notebook.ipynb; verified vs my_solution17_q6_hisk6 and
+(old_solutions/my_solution17_q6_hisk6/). This folder is a BYTE-IDENTICAL copy of that proven
+package (solution.py + notebook.ipynb; verified vs old_solutions/my_solution17_q6_hisk6 and
 vs submission.zip); resubmitting submission.zip reproduces the recorded best
 score exactly.
 
@@ -16,8 +16,8 @@ ds07 spectral n_neighbors 20 -> 40 (NN_OVR).
 
 Score history (hidden test, Mean ARI; deltas vs v17 in mean-ARI units)
 ----------------------------------------------------------------------
-q6      0.538102  BEST — this package (my_solution17_q6_hisk6) = p6 + 6 high-k
-v17+p6  0.516626  previous champion (my_solution17_p6_ds07nn40)
+q6      0.538102  BEST — this package (old_solutions/my_solution17_q6_hisk6) = p6 + 6 high-k
+v17+p6  0.516626  previous champion (old_solutions/old_solutions/my_solution17_p6_ds07nn40)
 v17     0.516148  champion before p6
 p7      0.515835  v17 + RING_FRAC applied (ds16@0.85, ds23@0.72) -> keep 0.80/0.80
 p5      0.515379  v17 + ds21 nn=40 -> nn=20 stands
@@ -28,7 +28,7 @@ P1      0.509156  v17 + ds21 pooled: pooling hurts ds21, closed
 p4/E    0.507233  v17 + ds02 k=2 spectral: k=3 CONFIRMED (big loss), closed
 v14     0.496133  v5 + four pins
 0.487758.zip in "submited scores" = v16-era package
-v5      0.4846    old champion (my_solution5)
+v5      0.4846    old champion (old_solutions/my_solution5)
 v15     0.485147  v14 + five more pins (net negative vs v14 on hidden)
 v7      0.4779
 v13     0.4662    v6 base + median PCA rule ONLY on cap-bound ds08/09/13/14
@@ -51,7 +51,7 @@ Notes
   isolation (only ds08/09/13/14 differ from its base) showed extra PCA dims hurt
   those four. PCA-dimension angle closed.
 - If one more submission is wanted, the only remaining untested variant is v6
-  alone (my_solution6): it tests whether the ds16/ds18/ds23 k=4/Spectral pins
+  alone (old_solutions/my_solution6): it tests whether the ds16/ds18/ds23 k=4/Spectral pins
   beat v5's handling of those three datasets. Otherwise: final = this folder.
 
 ================================================================================
@@ -83,9 +83,9 @@ each -> potential +0.06..+0.11 mean. That alone explains most of the 0.5166->0.6
 His +1 pattern (ds03/04/09/17) is NOT supported locally; ds18 mixed; ds19=2 plausible.
 
 Built & verified (deterministic, differ-on clean vs p6):
-  my_solution17_q5_k1trio   : ONLY ds08/ds13/ds14 -> k=1 (all-zeros output)
-  my_solution17_q4_hisks_full: all 9 of his ks (k=1 trio + ds03/04/09/17/18 +1, ds19 k=2)
-  my_solution17_q3_ds10pool : ds10 pooled (from earlier today, still valid)
+  old_solutions/old_solutions/my_solution17_q5_k1trio   : ONLY ds08/ds13/ds14 -> k=1 (all-zeros output)
+  old_solutions/old_solutions/my_solution17_q4_hisks_full: all 9 of his ks (k=1 trio + ds03/04/09/17/18 +1, ds19 k=2)
+  old_solutions/old_solutions/my_solution17_q3_ds10pool : ds10 pooled (from earlier today, still valid)
 
 SUBMISSION PLAN (5 attempts/day):
   1) q5 first  - clean high-EV hypothesis, easy attribution
@@ -112,16 +112,16 @@ Exact decomposition (fixed hidden test, sums x24):
    interaction among the six, sums still consistent: q4-q5 gain holds on hidden test)
 CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip rebuilt from it).
 
-- q7_kplus1 (my_solution18_kplus1/): EVERY ds k->k+1, same algo (probe for 'test has one extra
+- q7_kplus1 (probes/kplus1/): EVERY ds k->k+1, same algo (probe for 'test has one extra
   cluster'). ring_blob ds16/ds23 are geometric 2-cluster so effectively a 22-ds experiment.
   SUBMIT -> if mean ARI > 0.538102 the +1 hypothesis is broadly real; if it drops, a few winners
   may be hidden under many over-split losers -> then bisect (split ds into two halves) to localize.
 - q7 RESULT: SUBMITTED -> **0.497569** (vs q6 0.538102 => -0.0405 mean / -0.972 ARI-sum).
   REJECTED: adding a cluster broadly HURTS (over-splitting correct ds dominates). The 'test has one
   extra cluster' hypothesis is NOT supported at the aggregate level. Champion stays q6 = 0.538102.
-- q8_init (my_solution19_init/): GMM n_init 5->30 (all 3 gmm variants), nothing else. Low-risk robustness probe: keeps best-of-inits so can't worsen the fit; tests estimation-quality headroom.
+- q8_init (probes/init_ninit30/): GMM n_init 5->30 (all 3 gmm variants), nothing else. Low-risk robustness probe: keeps best-of-inits so can't worsen the fit; tests estimation-quality headroom.
 - k=1 ISOLATION probes (user hunch: group test masked an individual winner). Each = q6 + ONE trio ds -> k=1:
-  my_solution20_k1_ds08 (ds08=1), my_solution21_k1_ds13 (ds13=1), my_solution22_k1_ds14 (ds14=1).
+  probes/k1_ds08 (ds08=1), probes/k1_ds13 (ds13=1), probes/k1_ds14 (ds14=1).
   Compare each to q6=0.538102; delta*24 = that ds's ARI-sum at k=1. Any score>0.538102 => adopt that ds.
   Prior: group was -0.9619 sum, so likely all negative, but isolate to be sure. Submit one at a time, stop early if a winner.
 - k=1 ds08: SUBMITTED 0.526029 => -0.2898 ARI-sum (vs q6). NEGATIVE -> ds08 stays k=2.
@@ -131,8 +131,8 @@ CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip reb
   In (x1s,x5s) the data is TWO interleaved parabolic arcs (x5~f(x1) R2=0.966):
   para0 a=+0.036 n=410, para1 a=+0.199 n=502, rms~0.12 each, crossing at x1s~1.23.
   Champion spectral k=2 cuts the curve positionally -> ARI ~0.105 vs per-parabola split.
-  my_solution23_ds19parab = q6 + ds19:(2,'para2') — EM of two quadratics on (x1s,x5s),
+  probes/ds19parab = q6 + ds19:(2,'para2') — EM of two quadratics on (x1s,x5s),
   PCA(4) skipped for this method (structure invisible in PCA space). 23/24 datasets
   byte-identical to q6; ds19 == EM oracle ARI 1.0; runtime 2.4s all-24 on train.
   Readout: score>0.538102 => per-parabola truth, fold in (expect ~+0.03); big drop
-  => positional-cut world, revert. Figures: dev_v10/ds19_two_parabolas.png.
+  => positional-cut world, revert. Figures: dev/v10/ds19_two_parabolas.png.

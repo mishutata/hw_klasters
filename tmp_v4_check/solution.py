@@ -41,7 +41,7 @@ K_PRIOR = {
     "ds18": 2, "ds19": 4, "ds20": 4, "ds21": 3, "ds22": 2, "ds23": 2,
 }
 
-# Best input normalization per dataset on public train (analysis/norm_research):
+# Best input normalization per dataset on public train (dev/analysis/norm_research):
 # minmax wins 15/24, log-sym 8/24, robust 1/24; 'standard' never wins.
 NORM_PRIOR = {
     "ds00": "log-sym", "ds05": "log-sym", "ds06": "log-sym",
@@ -317,7 +317,7 @@ def _run(X, dataset_id=None):
     return np.asarray(labels_pool[len(Z_tr):], dtype=int), info
 
 
-# --- ds16/ds23: ellipse ring + central blob fix (validated in sol_16_23/) ---
+# --- ds16/ds23: ellipse ring + central blob fix (validated in old_solutions/sol_16_23/) ---
 # Standard k=2 clusterers split these datasets into arcs; here we fit an
 # ellipse-aware radial boundary in the top-2 Z dimensions and label
 # inside/outside instead. Fitted on pooled data at call time, so it is more
