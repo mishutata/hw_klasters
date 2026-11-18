@@ -24,3 +24,11 @@ Readout:
   - score > 0.538102  -> friend's deterministic cut beats our spectral on ds19, promote
   - score ~ 0.538102  -> ds19 contributes about the same either way
   - drop              -> revert to q6 (my_solution_final/submission.zip)
+
+RESULT (submitted 2026-11-18): **0.551536** = q6 + 0.013434 => ds19 alone ~+0.32 ARI-sum.
+WINNER -> PROMOTED TO CHAMPION (q7_ds19friend). my_solution_final/ now holds this config.
+Context: beats both q6 spectral on ds19 (0.538102) and our EM para2 on (x1s,x5s)
+(0.529434, probes/ds19parab) by a wide margin. The friend's hardcoded x6/x7 parabolas
+are the first ds19 method to beat the positional cut.
+Open A/B: my_solution_final_ds19/submission.zip (our EM two-parabola on +15 deg
+(x6,x7)) vs this one — if it scores > 0.551536, EM wins on robustness; else keep friend's.

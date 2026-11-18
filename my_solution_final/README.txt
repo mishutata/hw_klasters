@@ -170,4 +170,7 @@ CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip reb
 - k=2 ds03 probe (probes/k2_ds03/, built 2026-11-18 on champion q7_ds19friend):
   'ds03': (3,'gmm') -> (2,'gmm'), everything else byte-identical
   (verified: only ds03 labels differ on public train; k=2 sizes 641/319 vs k=3 641/192/127).
-  SUBMITTED 2026-11-18 -> pending.
+  SUBMITTED 2026-11-18 -> **0.554422** = base + 0.002886 (~+0.069 ARI-sum on ds03).
+  WINNER — estimate was ~0.5544 (+0.07 ARI-sum), hit it dead on.
+  CHAMPION: q8_ds03k2 = 0.554422 — this folder now holds that config
+  (solution.py/notebook.ipynb/submission.zip from probes/k2_ds03/).

@@ -1,13 +1,13 @@
 # Clustering Challenge — repo map
 
 Task: cluster 24 datasets (ds00–ds23), metric = Mean ARI. Statement: `условия.txt`.
-Champion: **q7_ds19friend = 0.551536** (2026-11-18) → `my_solution_final/` (its README.txt is the full score log).
+Champion: **q8_ds03k2 = 0.554422** (2026-11-18) → `my_solution_final/` (its README.txt is the full score log).
 
 | Folder | What's inside |
 |---|---|
-| `my_solution_final/` | **Champion q7_ds19friend = 0.551536**: solution.py + notebook.ipynb + submission.zip + README.txt (score/probe log) |
-| `probes/` | Single-variable probes, each = champion + exactly one change: `ds19friend` (WON 0.551536), `ds19parab` (lost 0.529434), `init_ninit30`, `kplus1` (lost 0.497569), `k1_ds08` (lost 0.526029), `k1_ds13`, `k1_ds14`, `k2_ds13` (lost 0.546620), `k2_ds03` (pending). Readout: `(score − base) × 24` = that dataset's ARI-sum |
-| `my_solution_final_ds19/` | Open A/B: our EM two-parabola ds19 on +15° (x6,x7), everything else = q6. Submit vs champion 0.551536 |
+| `my_solution_final/` | **Champion q8_ds03k2 = 0.554422**: solution.py + notebook.ipynb + submission.zip + README.txt (score/probe log) |
+| `probes/` | Single-variable probes, each = champion + exactly one change: `ds19friend` (WON 0.551536), `ds19parab` (lost 0.529434), `init_ninit30`, `kplus1` (lost 0.497569), `k1_ds08` (lost 0.526029), `k1_ds13`, `k1_ds14`, `k2_ds13` (lost 0.546620), `k2_ds03` (WON 0.554422). Readout: `(score − base) × 24` = that dataset's ARI-sum |
+| `my_solution_final_ds19/` | Open A/B: our EM two-parabola ds19 on +15° (x6,x7), everything else = q6. Submit vs champion 0.554422 |
 | `old_solutions/` | All previous packages: `my_solution2…17*` (incl. A/B & p/q variants), `my_solver`, `sol_16_23`, `friend` (groupmate's) |
 | `pictures/` | Figures only: `pair_plots/`, `pair_plots_v9/`, `pair_plots_v10/` (from champion), `clustering_pictures*/`, loose check PNGs |
 | `dev/` | Versioned dev workspaces (scripts + figures + logs): `v4…v16`, `analysis/`, `analysis2/`. Scripts assume CWD = repo root |
