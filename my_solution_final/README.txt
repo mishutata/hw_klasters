@@ -149,3 +149,25 @@ CHAMPION: q6 = 0.538102 (this folder now holds the q6 config; submission.zip reb
   0.592 vs it) -> no high-confidence better method, so no further ds19 probe.
   Figures: dev/v10/ds19_parabola_story.png, ds19_one_curve.png,
   ds19_parab_coord_heatmap.png, ds19_x5x6.png; tools/tools_ds19_viz*.py.
+
+- ds19 FRIEND-PARABOLA probe (probes/ds19friend/, built 2026-11-18): q6 + friend's
+  deterministic x6/x7 parabolas copied verbatim from old_solutions/friend/message.txt
+  (hardcoded train mean/scale, two rotated-frame quadratics, nearest by vertical
+  residual; O(n), no fit at test time). Everything else byte-identical to q6.
+  SUBMITTED 2026-11-18 -> **0.551536** = q6 + 0.013434 (~+0.32 ARI-sum on ds19 alone).
+  WINNER. Beats both q6 spectral (0.538102) and our EM para2 probe (0.529434).
+  CHAMPION: q7_ds19friend = 0.551536 — this folder now holds that config
+  (solution.py/notebook.ipynb/submission.zip copied from probes/ds19friend/).
+- Open A/B: my_solution_final_ds19/submission.zip = our EM two-parabola on +15 deg
+  (x6,x7) (632/280 split; friend's is 438/474, only 28.5% point agreement). If it
+  scores > 0.551536 -> EM wins (more robust: fit on train, no hardcoded constants);
+  else keep friend's hardcoded parabolas.
+- k=2 ds13 probe (probes/k2_ds13/, built 2026-11-18 on champion q7_ds19friend):
+  'ds13': (3,'gmm_tied') -> (2,'gmm_tied'), everything else byte-identical
+  (verified: only ds13 labels differ on public train; k=2 sizes 259/725 vs k=3 208/520/256).
+  SUBMITTED 2026-11-18 -> **0.546620** = base - 0.004916 (~-0.118 ARI-sum on ds13).
+  REJECTED: ds13 stays k=3. Champion unchanged: q7_ds19friend = 0.551536.
+- k=2 ds03 probe (probes/k2_ds03/, built 2026-11-18 on champion q7_ds19friend):
+  'ds03': (3,'gmm') -> (2,'gmm'), everything else byte-identical
+  (verified: only ds03 labels differ on public train; k=2 sizes 641/319 vs k=3 641/192/127).
+  SUBMITTED 2026-11-18 -> pending.

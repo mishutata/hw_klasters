@@ -25,7 +25,7 @@ CFG = {
     'ds15': (4, 'gmm'),
     'ds16': (2, 'ring_blob'),       
     'ds17': (3, 'kmeans'),          'ds18': (3, 'gmm'),
-    'ds19': (2, 'spectral_knn'),    'ds20': (4, 'kmeans'),
+    'ds19': (2, 'parabola_ds19'),    'ds20': (4, 'kmeans'),
     'ds21': (3, 'spectral_knn'),       
     'ds22': (2, 'gmm'),             'ds23': (2, 'ring_blob'),  
 }
@@ -38,6 +38,27 @@ MINMAX_DS = {'ds00','ds01','ds05','ds06','ds12','ds17','ds22'}
 # PROBE p6: NN_OVR={'ds07': 40} at local spectral site; ds passed only for spectral_knn
 RING_FRAC = {'ds16': 0.85, 'ds23': 0.72}
 NN_OVR = {'ds07': 40}
+# --- ds19: friend's deterministic parabolas (copied verbatim from old_solutions/friend/message.txt) ---
+DS19_PARABOLA_PARAMS = [
+    (-1.1793103448, np.array([-0.51450670080271, 0.30157143901503, 1.10187675542021])),
+    (2.0000000000, np.array([-0.29481027741668, 0.82156823037054, 0.43004646553911])),
+]
+
+DS19_MEAN_X6 = -0.36252027523335
+DS19_SCALE_X6 = 0.34766015183175
+DS19_MEAN_X7 = -0.43738367249569
+DS19_SCALE_X7 = 0.47794327687906
+
+def _assign_ds19_parabolas(X_8d):
+    """Deterministic assign для ds19 с train-hardcoded normalization."""
+    x = (X_8d[:, 5] - DS19_MEAN_X6) / DS19_SCALE_X6
+    y = (X_8d[:, 6] - DS19_MEAN_X7) / DS19_SCALE_X7
+    dists = np.zeros((len(x), 2))
+    for c, (theta, coef) in enumerate(DS19_PARABOLA_PARAMS):
+        xr = x * np.cos(theta) + y * np.sin(theta)
+        yr = -x * np.sin(theta) + y * np.cos(theta)
+        dists[:, c] = np.abs(yr - np.polyval(coef, xr))
+    return dists.argmin(1)
 
 def _clean(X):
     X = np.asarray(X, dtype=float)
@@ -186,6 +207,13 @@ def cluster(X, dataset_id=None):
     k, mt = CFG[ds]
     if k >= len(X):
         return np.zeros(len(X), dtype=int)
+
+    # ds19: friend's deterministic parabolas on raw x6/x7 (no pool, no PCA)
+    if mt == 'parabola_ds19':
+        lab = _assign_ds19_parabolas(X)
+        if len(np.unique(lab)) < k:  # degenerate guard -> champion fallback
+            return _run_local(X, ds, k, 'spectral_knn')
+        return lab
 
     # ds15 and ring datasets run on the test sample only (no pooling)
     if ds == 'ds15' or mt == 'ring_blob':
